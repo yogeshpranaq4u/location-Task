@@ -5,3 +5,11 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
 }
+ext {
+    appTargetSdk = 33
+    appCompileSdk = 33
+    appMinSdk = 21
+    ktx_version = '1.10.0'
+    appCombat_version = '1.6.1'
+    material_version = '1.8.0'
+}
