@@ -2,6 +2,7 @@ package com.example.demoproject
 
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.LocationManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -52,7 +54,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         mMap.isMyLocationEnabled = true
                 val location1 = LatLng(28.451700, 77.142403)
+        val destinationLatLng = LatLng(28.497310, 77.182810)
                 mMap.addMarker(MarkerOptions().position(location1).icon(BitmapDescriptorFactory.defaultMarker()))
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(location1))
+                mMap.addMarker(MarkerOptions().position(destinationLatLng).icon(BitmapDescriptorFactory.defaultMarker()))
+        val polylineOptions = PolylineOptions().add(location1, destinationLatLng).color(Color.BLUE)
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location1))
+        mMap.addPolyline(polylineOptions)
     }
 }

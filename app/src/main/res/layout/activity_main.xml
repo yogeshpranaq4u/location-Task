@@ -54,5 +54,14 @@
         android:textAllCaps="false"
         app:cornerRadius="@dimen/dim_16dp" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/news"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dim_16dp"
+        android:text="@string/news"
+        android:textAllCaps="false"
+        app:cornerRadius="@dimen/dim_16dp" />
+
 
 </LinearLayout>

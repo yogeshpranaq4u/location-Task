@@ -1,6 +1,7 @@
 package com.example.demoproject.ui
 
 import android.content.Intent
+import android.graphics.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -37,6 +38,9 @@ class MainActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
             }
+            news?.setOnClickListener {
+                startActivity(Intent(this@MainActivity, NewsActivity::class.java))
+            }
         }
     }
 
@@ -46,4 +50,5 @@ class MainActivity : AppCompatActivity() {
             userLogin.isEnabled = userEmail.text.toString().validateMail() && userPassword.text.toString().validatePassword()
         }
     }
+
 }
