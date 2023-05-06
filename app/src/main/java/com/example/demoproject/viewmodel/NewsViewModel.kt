@@ -7,17 +7,35 @@ import androidx.lifecycle.viewModelScope
 import com.example.demoproject.data.News
 import com.example.demoproject.repository.Repository
 import kotlinx.coroutines.launch
-import retrofit2.Call
 
-class NewsViewModel(private val repository: Repository):ViewModel() {
+class NewsViewModel : ViewModel() {
+    private val myRepository = Repository()
 
-    private val myResponse : MutableLiveData<News> = MutableLiveData()
-    val myNews:LiveData<News> = myResponse
+    private val myResponse: MutableLiveData<News> = MutableLiveData()
+    val myNews: LiveData<News> = myResponse
 
-    fun getNews(){
+    private val myBusinessResponse: MutableLiveData<News> = MutableLiveData()
+    val myBusinessNews: LiveData<News> = myBusinessResponse
+
+    private val myMedicalResponse: MutableLiveData<News> = MutableLiveData()
+    val myMedicalNews: LiveData<News> = myMedicalResponse
+
+    fun getNews() {
         viewModelScope.launch {
-            val response = repository.getAllNews()
+            val response = myRepository.getAllNews()
             myResponse.value = response
+        }
+    }
+    fun getBusinessNews() {
+        viewModelScope.launch {
+            val response = myRepository.getAllBusinessNews()
+            myBusinessResponse.value = response
+        }
+    }
+    fun getMedicalNews() {
+        viewModelScope.launch {
+            val response = myRepository.getAllMedicalNews()
+            myMedicalResponse.value = response
         }
     }
 }

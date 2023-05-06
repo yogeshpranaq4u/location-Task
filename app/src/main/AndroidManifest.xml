@@ -24,8 +24,8 @@
             android:label="@string/title_activity_maps"></activity>
         <activity
             android:name=".ui.NewsActivity"
-            android:exported="true"
-            android:label="@string/title_activity_maps"></activity>
+            android:exported="false"
+            android:theme="@style/Theme.NoActionBar"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

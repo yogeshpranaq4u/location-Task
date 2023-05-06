@@ -2,10 +2,32 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/startFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.demoproject.ui.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="Top News">
+    </fragment>
+    <fragment
+        android:id="@+id/newsViewFragment"
+        android:name="com.example.demoproject.ui.NewsViewFragment" />
+    <fragment
+        android:id="@+id/businessNewsFragment"
+        android:name="com.example.demoproject.ui.BusinessNewsFragment"
+        android:label="BusinessNewsFragment" />
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.demoproject.ui.StartFragment"
+        android:label="World News">
+        <action
+            android:id="@+id/action_startFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_businessNewsFragment"
+            app:destination="@id/businessNewsFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_newsViewFragment2"
+            app:destination="@id/newsViewFragment" />
+    </fragment>
 </navigation>

@@ -8,4 +8,5 @@
     <string name="login_success">Login Success</string>
     <string name="invalid_cred">INvalid Credentials</string>
     <string name="news">News</string>
+    <string name="all">All</string>
 </resources>
