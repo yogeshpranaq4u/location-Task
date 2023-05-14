@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.example.demoproject.R
 import com.example.demoproject.Utits.fragmentList
 import com.example.demoproject.Utits.fragmentTitleList
 import com.example.demoproject.adapter.ViewpagerAdapter
@@ -26,6 +28,7 @@ class StartFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
+        clickListeners()
     }
 
     private fun init() {
@@ -40,6 +43,14 @@ class StartFragment : BaseFragment() {
             TabLayoutMediator(newsTab, newsViewpagerMain) { tab, position ->
                 tab.text = adapter?.getPageTitle(position)
             }.attach()
+        }
+    }
+
+    private fun clickListeners(){
+        binding?.apply {
+            createBlog.setOnClickListener {
+                findNavController().navigate(R.id.action_startFragment_to_createBlogFragment)
+            }
         }
     }
 }

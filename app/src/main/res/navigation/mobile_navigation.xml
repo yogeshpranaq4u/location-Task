@@ -29,5 +29,12 @@
         <action
             android:id="@+id/action_startFragment_to_newsViewFragment2"
             app:destination="@id/newsViewFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_createBlogFragment"
+            app:destination="@id/createBlogFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/createBlogFragment"
+        android:name="com.example.demoproject.ui.CreateBlogFragment"
+        android:label="CreateBlogFragment" />
 </navigation>

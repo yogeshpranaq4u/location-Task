@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1045250026184",
+    "project_id": "bindass-news",
+    "storage_bucket": "bindass-news.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045250026184:android:e5456e7a3aa94ca0d8d3fd",
+        "android_client_info": {
+          "package_name": "com.twentyone.bindassnews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1045250026184-j5g85m4859pq4pfiipsjt4opam7rjuur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdFKuQ6kP8kslIwVTmbrg56iaTq18wA5E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1045250026184-j5g85m4859pq4pfiipsjt4opam7rjuur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,6 +2,7 @@ package com.example.demoproject.apicontroller
 
 import com.example.demoproject.Utits.API_KEY
 import com.example.demoproject.data.Bussnies
+import com.example.demoproject.data.Medicine
 import com.example.demoproject.data.News
 import com.google.android.gms.common.api.internal.ApiKey
 import retrofit2.Call
@@ -23,4 +24,7 @@ interface ApiInterface {
 
     @GET("top-headlines?country=in&category=entertainment&$API_KEY")
     suspend fun getEntertainmentNews() : News
+
+    @GET("druginfo?drug=advil")
+    suspend fun getMedicalDetails() : Medicine
 }

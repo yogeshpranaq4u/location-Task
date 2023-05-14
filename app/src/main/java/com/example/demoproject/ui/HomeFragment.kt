@@ -5,15 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.demoproject.R
 import com.example.demoproject.Utits.SELECTED_POSITION
 import com.example.demoproject.databinding.HomeFragmentBinding
 import com.example.demoproject.listeners.ClickListeners
-import com.example.demoproject.viewmodel.NewsViewModel
 
 class HomeFragment : BaseFragment(),ClickListeners {
     private var binding: HomeFragmentBinding? = null
@@ -34,10 +30,16 @@ class HomeFragment : BaseFragment(),ClickListeners {
     private fun observer(){
         newsViewModel.getNews()
         newsViewModel.getMedicalNews()
+        newsViewModel.getMedicineDetails()
         newsViewModel.myNews.observe(viewLifecycleOwner) { response ->
+            println("HomeFragment.observer ${response.articles[0].urlToImage}")
             adapter = RecyclerAdapter(response.articles, this)
             binding?.newsList?.adapter = adapter
         }
+        newsViewModel.myMedicine.observe(viewLifecycleOwner) { response ->
+            println("HomeFragment.observer ${response.size} // ${response[0].brand_name}")
+        }
+
 
         binding?.newsList?.smoothScrollToPosition(SELECTED_POSITION)
     }

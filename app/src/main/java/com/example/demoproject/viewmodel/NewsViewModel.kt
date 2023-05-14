@@ -4,12 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.demoproject.data.BlogModel
+import com.example.demoproject.data.Medicine
 import com.example.demoproject.data.News
 import com.example.demoproject.repository.Repository
+import com.google.firebase.database.*
 import kotlinx.coroutines.launch
 
 class NewsViewModel : ViewModel() {
     private val myRepository = Repository()
+    private var reference: DatabaseReference? = null
+
+    private val myBlogs: MutableLiveData<BlogModel?> = MutableLiveData()
+    val myBlogsLiveData: MutableLiveData<BlogModel?> = myBlogs
 
     private val myResponse: MutableLiveData<News> = MutableLiveData()
     val myNews: LiveData<News> = myResponse
@@ -19,6 +26,9 @@ class NewsViewModel : ViewModel() {
 
     private val myMedicalResponse: MutableLiveData<News> = MutableLiveData()
     val myMedicalNews: LiveData<News> = myMedicalResponse
+
+    private val myMedicineResponse: MutableLiveData<Medicine> = MutableLiveData()
+    val myMedicine: LiveData<Medicine> = myMedicineResponse
 
     fun getNews() {
         viewModelScope.launch {
@@ -38,4 +48,33 @@ class NewsViewModel : ViewModel() {
             myMedicalResponse.value = response
         }
     }
+
+    fun getMedicineDetails() {
+        viewModelScope.launch {
+            val response = myRepository.getAllMedicalDetails()
+            myMedicineResponse.value = response
+        }
+    }
+
+    fun getBlogData(){
+        reference = FirebaseDatabase.getInstance().getReference("Blogger")
+
+        reference?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (userSnapshot in snapshot.children) {
+                        val user: BlogModel? = userSnapshot.getValue(BlogModel::class.java)
+                        viewModelScope.launch {
+                            myBlogs.value = user
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
 }
